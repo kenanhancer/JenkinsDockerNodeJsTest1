@@ -3,9 +3,7 @@ def CONTAINER_TAG="latest"
 def DOCKER_HUB_USER="kenanhancer"
 def HTTP_PORT="8090"
 
-node {
-    def app
-	
+node {	
 	stage('Initialize'){
 		def dockerHome = tool 'myDocker'
 		
@@ -48,14 +46,15 @@ node {
 
 def checkDocker(){
     try {
-        sh "sudo docker version"
+		echo "$PATH"
+        sh "docker version"
     } catch(error){}
 }
 
 def imagePrune(containerName){
     try {
-        sh "sudo docker image prune -f"
-        sh "sudo docker stop $containerName"
+        sh "docker image prune -f"
+        sh "docker stop $containerName"
     } catch(error){}
 }
 
