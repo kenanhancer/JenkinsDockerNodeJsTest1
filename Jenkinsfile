@@ -1,4 +1,4 @@
-def CONTAINER_NAME="jenkins-pipeline"
+def CONTAINER_NAME="jenkinsnode-pipeline"
 def CONTAINER_TAG="latest"
 def DOCKER_HUB_USER="kenanhancer"
 def HTTP_PORT="8090"
@@ -48,12 +48,14 @@ def checkDocker(){
     try {
 		echo "$PATH"
         sh "docker version"
+		sh "docker ps"
+		sh "docker images"
     } catch(error){}
 }
 
 def imagePrune(containerName){
     try {
-        sh "docker image prune -f"
+		sh "docker image prune -f"
         sh "docker stop $containerName"
     } catch(error){}
 }
