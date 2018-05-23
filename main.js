@@ -8,6 +8,8 @@ var server = http.createServer(function (request, response) {
   console.log("OK");
 });
 
-// listen on localhost:8000
-server.listen(8000);
-console.log("Server listening at http://127.0.0.1:8000/");
+var port = process.env.port || 8090;
+
+// listen on localhost:8090
+server.listen(port);
+console.log("Server listening at http://127.0.0.1:/" + port);
