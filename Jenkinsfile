@@ -17,6 +17,15 @@ node {
 
         checkout scm
     }
+	
+	stage('Check Docker') {
+	
+		checkDocker()
+	}
+	
+    stage("Image Prune"){
+        imagePrune(CONTAINER_NAME)
+    }
 
     stage("Image Prune"){
         imagePrune(CONTAINER_NAME)
@@ -37,10 +46,16 @@ node {
     }
 }
 
+def checkDocker(){
+    try {
+        sh "sudo docker version"
+    } catch(error){}
+}
+
 def imagePrune(containerName){
     try {
-        sh "docker image prune -f"
-        sh "docker stop $containerName"
+        sh "sudo docker image prune -f"
+        sh "sudo docker stop $containerName"
     } catch(error){}
 }
 
