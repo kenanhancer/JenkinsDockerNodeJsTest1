@@ -1,6 +1,6 @@
 {
   "name": "KenanHancerJenkinsTest1",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Hello World HTTP server",
   "main": "main.js",
   "scripts": {
